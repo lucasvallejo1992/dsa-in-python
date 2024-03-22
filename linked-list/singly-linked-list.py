@@ -26,6 +26,24 @@ class LinkedList:
     while last_node.next:
       last_node = last_node.next
     last_node.next = new_node
+
+  def delete(self, value):
+    cur_node = self.head
+
+    if cur_node and cur_node.data == value:
+      self.head = cur_node.next
+      return
+
+    prev_node = None
+
+    while cur_node and cur_node.data != value:
+      prev_node = cur_node
+      cur_node = cur_node.next
+
+    if cur_node is None:
+      return
+
+    prev_node.next = cur_node.next
   
   def prepend(self, data):
     new_node = Node(data)
@@ -45,6 +63,38 @@ class LinkedList:
     new_node.next = prev_node.next
     prev_node.next = new_node
 
+  def delete_node_at(self, position):
+    if self.head is None:
+      return
+
+    cur_node = self.head
+    if position == 0:
+      self.head = cur_node.next
+      return
+
+    prev_node = None
+    count = 0
+    while cur_node and count != position:
+      if cur_node.next is None:
+        print("Position out of range.")
+        return
+      prev_node = cur_node
+      cur_node = cur_node.next
+      count += 1
+    
+    if cur_node is None:
+      return
+    
+    prev_node.next = cur_node.next
+
+  def length(self):
+    cur_node = self.head
+    count = 0
+    while cur_node:
+      count += 1
+      cur_node = cur_node.next
+    return count
+
 
 # Test
 linked_list = LinkedList()
@@ -57,5 +107,10 @@ linked_list.insert_after_node(linked_list.head.next, "Y")
 
 linked_list.prepend("Z")
 
+linked_list.delete("D")
+linked_list.delete("X")
+
+linked_list.delete_node_at(2)
 
 linked_list.print_list() 
+print("Linked list length: " + str(linked_list.length()))
