@@ -117,6 +117,16 @@ class LinkedList:
         self.head = curr_1
 
     curr_1.next, curr_2.next = curr_2.next, curr_1.next
+  
+  def reverse(self):
+    prev = None 
+    cur = self.head
+    while cur:
+      nxt = cur.next
+      cur.next = prev
+      prev = cur 
+      cur = nxt 
+    self.head = prev
 
   def length(self):
     cur_node = self.head
@@ -144,6 +154,8 @@ linked_list.delete("X")
 linked_list.delete_node_at(2)
 
 linked_list.swap_nodes("C", "A")
+
+linked_list.reverse()
 
 linked_list.print_list() 
 print("Linked list length: " + str(linked_list.length()))
