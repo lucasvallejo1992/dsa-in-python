@@ -135,27 +135,3 @@ class LinkedList:
       count += 1
       cur_node = cur_node.next
     return count
-
-
-# Test
-linked_list = LinkedList()
-linked_list.append("A")
-linked_list.append("B")
-linked_list.append("C")
-linked_list.append("D")
-
-linked_list.insert_after_node(linked_list.head.next, "Y")
-
-linked_list.prepend("Z")
-
-linked_list.delete("D")
-linked_list.delete("X")
-
-linked_list.delete_node_at(2)
-
-linked_list.swap_nodes("C", "A")
-
-linked_list.reverse()
-
-linked_list.print_list() 
-print("Linked list length: " + str(linked_list.length()))
