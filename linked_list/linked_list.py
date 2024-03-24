@@ -136,37 +136,37 @@ class LinkedList:
 
     curr_1.next, curr_2.next = curr_2.next, curr_1.next
 
-  def merge_sorted(self, llist):
-    p = self.head 
-    q = llist.head
-    s = None
+  def merge_sorted(self, other_list):
+    cur_self = self.head 
+    cur_other = other_list.head
+    sorted = None
 
-    if not p:
-        return q
-    if not q:
-        return p
+    if not cur_self:
+        return cur_other
+    if not cur_other:
+        return cur_self
 
-    if p and q:
-        if p.data <= q.data:
-            s = p 
-            p = s.next
+    if cur_self and cur_other:
+        if cur_self.data <= cur_other.data:
+            sorted = cur_self 
+            cur_self = sorted.next
         else:
-            s = q
-            q = s.next
-        new_head = s 
-    while p and q:
-        if p.data <= q.data:
-            s.next = p 
-            s = p 
-            p = s.next
+            sorted = cur_other
+            cur_other = sorted.next
+        new_head = sorted 
+    while cur_self and cur_other:
+        if cur_self.data <= cur_other.data:
+            sorted.next = cur_self 
+            sorted = cur_self 
+            cur_self = sorted.next
         else:
-            s.next = q
-            s = q
-            q = s.next
-    if not p:
-        s.next = q 
-    if not q:
-        s.next = p
+            sorted.next = cur_other
+            sorted = cur_other
+            cur_other = sorted.next
+    if not cur_self:
+        sorted.next = cur_other 
+    if not cur_other:
+        sorted.next = cur_self
 
     self.head = new_head     
     return self.head
