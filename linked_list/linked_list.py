@@ -170,3 +170,17 @@ class LinkedList:
 
     self.head = new_head     
     return self.head
+  
+  def remove_duplicates(self):
+    cur = self.head
+    prev = None
+    dup_values = dict()
+
+    while cur:
+      if cur.data in dup_values:
+        prev.next = cur.next
+        cur = None
+      else:
+        dup_values[cur.data] = 1
+        prev = cur
+      cur = prev.next
