@@ -170,7 +170,7 @@ class LinkedList:
 
     self.head = new_head     
     return self.head
-  
+
   def remove_duplicates(self):
     cur = self.head
     prev = None
@@ -184,3 +184,26 @@ class LinkedList:
         dup_values[cur.data] = 1
         prev = cur
       cur = prev.next
+
+  def get_nth_from_last(self, n):
+    main_pointer = self.head
+    ref_pointer = self.head
+
+    if n > 0:
+        count = 0
+        while ref_pointer:
+            count += 1
+            if(count>=n):
+                break
+            ref_pointer = ref_pointer.next
+            
+        if not ref_pointer:
+            print(str(n) + " is greater than the number of nodes in list.")
+            return None
+
+        while ref_pointer.next:
+            main_pointer = main_pointer.next
+            ref_pointer = ref_pointer.next
+        return main_pointer.data
+    else:
+        return None
