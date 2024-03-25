@@ -7,3 +7,5 @@ linked_list.append("C")
 linked_list.append("D")
 
 linked_list.insert_after_node(linked_list.head.next, "Y")
+
+linked_list.print_list()
