@@ -207,3 +207,26 @@ class LinkedList:
         return main_pointer.data
     else:
         return None
+    
+  def is_palindrome(self):
+    slow = fast = self.head
+    while fast and fast.next:
+      slow = slow.next
+      fast = fast.next.next
+
+    prev = None
+    while slow:
+      nxt = slow.next
+      slow.next = prev
+      prev = slow
+      slow = nxt
+
+    left = self.head
+    right = prev
+    while right:
+      if left.data != right.data:
+        return False
+      left = left.next
+      right = right.next
+
+    return True
