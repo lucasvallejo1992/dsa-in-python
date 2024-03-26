@@ -230,3 +230,17 @@ class LinkedList:
       right = right.next
 
     return True
+
+  def move_tail_to_head(self):
+    if self.head is None:
+        return
+     
+    last = self.head 
+    second_to_last = None
+    while last.next:
+        second_to_last = last
+        last = last.next
+
+    last.next = self.head 
+    second_to_last.next = None 
+    self.head = last
