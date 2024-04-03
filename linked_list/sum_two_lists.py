@@ -6,9 +6,9 @@ list1.append(6)
 list1.append(3)
 
 list2 = LinkedList()
-list2.append(5)
-list2.append(6)
-list2.append(3)
+list2.append(8)
+list2.append(4)
+list2.append(2)
 
 def sum_two_lists(self, other_list):
   node_first = self.head
